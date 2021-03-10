@@ -32,6 +32,6 @@ toDoList.addEventListener('dblclick', function (event) {
   if (event.target.className === 'completede') {
     event.target.classList.remove('completede');
   } else {
-    event.target.className = 'completede';
+    event.target.classList.add('completede');
   }
 })
