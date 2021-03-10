@@ -16,6 +16,17 @@ buttonCreateTask.addEventListener('click', createListItem);
 
 let toDoList = document.getElementById('lista-tarefas');
 
+
 toDoList.addEventListener('click', function(event){
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  let getLi = document.getElementsByTagName('li');
+  for(let index = 0; index < getLi.length; index += 1){
+    if(getLi[index].style.backgroundColor === 'rgb(128, 128, 128)'){
+      getLi[index].style.backgroundColor = 'transparent';
+      event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    } else {
+      event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    }
+  }
+  
+  console.log(event.target.style.backgroundColor);
 })
