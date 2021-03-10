@@ -29,9 +29,9 @@ toDoList.addEventListener('click', function (event) {
 })
 
 toDoList.addEventListener('dblclick', function (event) {
-  if (event.target.className === 'completede') {
-    event.target.classList.remove('completede');
+  if (event.target.className === 'completed') {
+    event.target.classList.remove('completed');
   } else {
-    event.target.classList.add('completede');
+    event.target.classList.add('completed');
   }
 })
