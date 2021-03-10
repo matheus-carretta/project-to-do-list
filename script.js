@@ -15,9 +15,9 @@ let inputText = document.getElementById('texto-tarefa');
 buttonCreateTask.addEventListener('click', createListItem);
 
 let toDoList = document.getElementById('lista-tarefas');
+let getLi = document.getElementsByTagName('li');
 
 toDoList.addEventListener('click', function (event) {
-  let getLi = document.getElementsByTagName('li');
   for (let index = 0; index < getLi.length; index += 1) {
     if (getLi[index].style.backgroundColor === 'rgb(128, 128, 128)') {
       getLi[index].style.backgroundColor = 'transparent';
@@ -35,3 +35,14 @@ toDoList.addEventListener('dblclick', function (event) {
     event.target.classList.add('completed');
   }
 })
+
+let buttonDeleteList = document.getElementById('apaga-tudo');
+
+function deleteList () {
+  let aux = getLi.length
+  for(let index = 0; index < aux; index += 1){
+    toDoList.removeChild(toDoList.firstChild);
+  }
+}
+
+buttonDeleteList.addEventListener('click', deleteList);
