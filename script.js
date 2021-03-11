@@ -39,10 +39,21 @@ toDoList.addEventListener('dblclick', function (event) {
 let buttonDeleteList = document.getElementById('apaga-tudo');
 
 function deleteList () {
-  let aux = getLi.length
-  for(let index = 0; index < aux; index += 1){
-    toDoList.removeChild(toDoList.firstChild);
+  let getLi = document.querySelectorAll('li');
+  for(let index = 0; index < getLi.length; index += 1){
+    getLi[index].remove();
   }
 }
 
 buttonDeleteList.addEventListener('click', deleteList);
+
+let buttonRemoveCompleted = document.getElementById('remover-finalizados');
+
+function removeCompleted () {
+  let getLiCompleted = document.querySelectorAll('.completed');
+  for(let index = 0; index < getLiCompleted.length; index += 1){
+    getLiCompleted[index].remove();
+  }
+}
+
+buttonRemoveCompleted.addEventListener('click', removeCompleted);
