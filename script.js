@@ -1,3 +1,11 @@
+let toDoList = document.getElementById('lista-tarefas');
+
+function getToDoList () {
+  toDoList.innerHTML = localStorage.getItem('ol');
+  console.log(toDoList.innerHTML);
+}
+getToDoList();
+
 function createListItem() {
   if (inputText.value === '') {
     alert("Campo de texto vazio, favor preencher");
@@ -14,7 +22,6 @@ let inputText = document.getElementById('texto-tarefa');
 
 buttonCreateTask.addEventListener('click', createListItem);
 
-let toDoList = document.getElementById('lista-tarefas');
 let getLi = document.getElementsByTagName('li');
 
 toDoList.addEventListener('click', function (event) {
@@ -39,6 +46,7 @@ toDoList.addEventListener('dblclick', function (event) {
 let buttonDeleteList = document.getElementById('apaga-tudo');
 
 function deleteList () {
+  localStorage.clear();
   let getLi = document.querySelectorAll('li');
   for(let index = 0; index < getLi.length; index += 1){
     getLi[index].remove();
@@ -57,3 +65,10 @@ function removeCompleted () {
 }
 
 buttonRemoveCompleted.addEventListener('click', removeCompleted);
+
+//Realizado com ajuda do Henrique Zózimo!
+let buttonSaveTask = document.getElementById('salvar-tarefas');
+buttonSaveTask.addEventListener('click', function(){
+  let toDoListInnerHTML = toDoList.innerHTML;
+  localStorage.setItem('ol', toDoListInnerHTML);
+})
