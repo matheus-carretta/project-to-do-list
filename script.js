@@ -26,17 +26,17 @@ let getLi = document.getElementsByTagName('li');
 
 toDoList.addEventListener('click', function (event) {
   for (let index = 0; index < getLi.length; index += 1) {
-    if (getLi[index].style.backgroundColor === 'rgb(128, 128, 128)') {
-      getLi[index].style.backgroundColor = 'transparent';
-      event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    if (getLi[index].classList.contains('selected')) {
+      getLi[index].classList.remove('selected');
+      event.target.classList.add('selected');
     } else {
-      event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+      event.target.classList.add('selected');
     }
   }
 })
 
 toDoList.addEventListener('dblclick', function (event) {
-  if (event.target.className === 'completed') {
+  if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
   } else {
     event.target.classList.add('completed');
@@ -72,3 +72,12 @@ buttonSaveTask.addEventListener('click', function(){
   let toDoListInnerHTML = toDoList.innerHTML;
   localStorage.setItem('ol', toDoListInnerHTML);
 })
+
+let buttonMoveUp = document.getElementById('mover-cima');
+let buttonMoveDown = document.getElementById('mover-baixo');
+
+function moveUp (){
+  
+}
+
+buttonMoveUp.addEventListener('click', moveUp);
