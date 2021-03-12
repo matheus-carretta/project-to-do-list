@@ -81,9 +81,7 @@ function moveUp() {
   let allLi = document.querySelectorAll('li');
   for (let index = 0; index < allLi.length; index += 1) {
     if (allLi[index].classList.contains('selected')) {
-      if (index === 0) {
-
-      } else {
+      if (index !== 0) {
         let aux = allLi[index].previousElementSibling.outerHTML;
         allLi[index].previousElementSibling.outerHTML = allLi[index].outerHTML;
         allLi[index].outerHTML = aux;
@@ -98,9 +96,7 @@ function moveDown() {
   let allLi = document.querySelectorAll('li');
   for (let index = 0; index < allLi.length; index += 1) {
     if (allLi[index].classList.contains('selected')) {
-      if(index === (allLi.length - 1)){
-
-      } else {
+      if(index !== (allLi.length - 1)){
         let aux = allLi[index].nextElementSibling.outerHTML;
         allLi[index].nextElementSibling.outerHTML = allLi[index].outerHTML;
         allLi[index].outerHTML = aux;
