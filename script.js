@@ -106,3 +106,12 @@ function moveDown() {
 }
 
 buttonMoveDown.addEventListener('click', moveDown);
+
+let buttonRemoveSelected = document.getElementById('remover-selecionado')
+
+function removeSelected () {
+  let selectedElement = document.querySelector('.selected');
+  selectedElement.remove();
+}
+
+buttonRemoveSelected.addEventListener('click', removeSelected);
