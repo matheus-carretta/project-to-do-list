@@ -1,6 +1,6 @@
 let toDoList = document.getElementById('lista-tarefas');
 
-function getToDoList () {
+function getToDoList() {
   toDoList.innerHTML = localStorage.getItem('ol');
   console.log(toDoList.innerHTML);
 }
@@ -45,10 +45,10 @@ toDoList.addEventListener('dblclick', function (event) {
 
 let buttonDeleteList = document.getElementById('apaga-tudo');
 
-function deleteList () {
+function deleteList() {
   localStorage.clear();
   let getLi = document.querySelectorAll('li');
-  for(let index = 0; index < getLi.length; index += 1){
+  for (let index = 0; index < getLi.length; index += 1) {
     getLi[index].remove();
   }
 }
@@ -57,9 +57,9 @@ buttonDeleteList.addEventListener('click', deleteList);
 
 let buttonRemoveCompleted = document.getElementById('remover-finalizados');
 
-function removeCompleted () {
+function removeCompleted() {
   let getLiCompleted = document.querySelectorAll('.completed');
-  for(let index = 0; index < getLiCompleted.length; index += 1){
+  for (let index = 0; index < getLiCompleted.length; index += 1) {
     getLiCompleted[index].remove();
   }
 }
@@ -68,16 +68,45 @@ buttonRemoveCompleted.addEventListener('click', removeCompleted);
 
 //Realizado com ajuda do Henrique Zózimo!
 let buttonSaveTask = document.getElementById('salvar-tarefas');
-buttonSaveTask.addEventListener('click', function(){
+buttonSaveTask.addEventListener('click', function () {
   let toDoListInnerHTML = toDoList.innerHTML;
   localStorage.setItem('ol', toDoListInnerHTML);
 })
 
 let buttonMoveUp = document.getElementById('mover-cima');
 let buttonMoveDown = document.getElementById('mover-baixo');
+let selectedElement = document.querySelector('.selected');
 
-function moveUp (){
-  
+function moveUp() {
+  let allLi = document.querySelectorAll('li');
+  for (let index = 0; index < allLi.length; index += 1) {
+    if (allLi[index].classList.contains('selected')) {
+      if (index === 0) {
+
+      } else {
+        let aux = allLi[index].previousElementSibling.outerHTML;
+        allLi[index].previousElementSibling.outerHTML = allLi[index].outerHTML;
+        allLi[index].outerHTML = aux;
+      }
+    }
+  }
 }
 
 buttonMoveUp.addEventListener('click', moveUp);
+
+function moveDown() {
+  let allLi = document.querySelectorAll('li');
+  for (let index = 0; index < allLi.length; index += 1) {
+    if (allLi[index].classList.contains('selected')) {
+      if(index === (allLi.length - 1)){
+
+      } else {
+        let aux = allLi[index].nextElementSibling.outerHTML;
+        allLi[index].nextElementSibling.outerHTML = allLi[index].outerHTML;
+        allLi[index].outerHTML = aux;
+      }
+    }
+  }
+}
+
+buttonMoveDown.addEventListener('click', moveDown);
